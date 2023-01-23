@@ -1,12 +1,18 @@
+
+
 import React from 'react'
 
-function GifList({ images }) {
-    const gifs = images.map((image, index) => {
-        return <li key={`image ${index}`}><img src={image} alt='dolphin' /></li>
-    })
-    return (
-        <ul>{gifs}</ul>
-    )
+function GifList({gifs}) {
+    const url = gifs.images.original.url
+  return (
+    <div>
+        <ul>
+			<li>
+				<img height="200px" src={url} alt="gif" />
+			</li>
+		</ul>
+    </div>
+  )
 }
 
 export default GifList

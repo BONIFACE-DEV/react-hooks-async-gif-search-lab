@@ -1,25 +1,43 @@
 
+import React, {useState} from 'react'
 
-import React, { useState } from 'react'
+function GifSearch({handleSubmit}) {
 
-function GifSearch({ handleSubmit }) {
-    const [search, setSearch] = useState('');
-    function handleChange(event) {
-        setSearch(event.target.value)
+    const [searchTerm, setSearchTerm] = useState("");
+
+    function handleSearch(e){
+        setSearchTerm(e.target.value)
     }
 
-    function handleSearch(event) {
-        event.preventDefault();
-        setSearch('');
-        handleSubmit(search)
-    }
+    function onSubmit(e) {
+		e.preventDefault()
+		handleSubmit(searchTerm)
+	}
 
-    return (
-        <form onSubmit={handleSearch}>
-            <input type='text' value={search} onChange={handleChange} required></input>
-            <button>Find Gifs</button>
+  return (
+    <div className='app'>
+        <form className="form-label col" onSubmit={onSubmit}>
+            <div>
+                <label>Search Here
+                    <input 
+                        type="text"
+                        className='form-control'
+                        name='search'
+                        value={searchTerm}
+                        onChange={handleSearch}
+
+                     />
+                    
+                </label>
+            </div>
+            <div>
+                <button className="btn btn-success" type="submit">
+                    Search Gifs
+                </button>
+            </div>
         </form>
-    )
+    </div>
+  )
 }
 
-export default GifSearch
+export default GifSearch;
